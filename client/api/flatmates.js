@@ -1,9 +1,12 @@
 import request from 'superagent'
+import { getEncodedToken } from 'authenticare/client'
 
 const apiURL = 'http://localhost:3000/api/v1/users'
 
 export function getAllFlatmates (userId) {
   return request.get(`${apiURL}/flatmatelist/${userId}`)
+    .set({ 'Accept': 'application/json' })
+    .set({ 'Authorization': `Bearer ${getEncodedToken()}` })
     .then(res => { const obj = {}; obj.flatmates = res.body; return obj })
     .catch(err => {
       if (err.message === 'Not Found') {
@@ -19,6 +22,8 @@ export function getAllFlatmates (userId) {
 
 export function removeFlatmateByUserId (userId, flatmateId) {
   return request.delete(`${apiURL}/flatmatelist/${userId}/${flatmateId}`)
+    .set({ 'Accept': 'application/json' })
+    .set({ 'Authorization': `Bearer ${getEncodedToken()}` })
     .then(res => res.body)
     .catch(err => {
       if (err.message === 'Not Found') {
@@ -36,6 +41,8 @@ export function addFlatmateByUserId (userId, flatmate) {
   const obj = {}
   obj.name = flatmate
   return request.post(`${apiURL}/flatmates/${userId}/`)
+  .set({ 'Accept': 'application/json' })
+  .set({ 'Authorization': `Bearer ${getEncodedToken()}` })
   .send(obj)
   .then(res => res.body)
   .catch(err => {

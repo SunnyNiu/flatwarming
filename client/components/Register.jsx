@@ -13,12 +13,6 @@ import { connect } from 'react-redux'
 
 function Register (props) {
 
-  // useEffect(() => {
-  //   props.dispatch(hideReg())
-  //   props.dispatch(showLogin())
-  //   props.dispatch(hideLogout())
-  // }, [])
-
   const [form, setForm] = useState({
     username: '',
     password: ''
