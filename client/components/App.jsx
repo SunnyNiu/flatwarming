@@ -7,7 +7,8 @@ import { Container } from 'semantic-ui-react'
 import RegisterFlatDetails from './RegisterFlatDetails'
 import Dashboard from './Dashboard'
 import Welcome from './Welcome'
-import Setting from './Setting'
+import FlatmateSetting from './FlatmateSetting'
+import JobSetting from './JobSetting'
 
 class App extends React.Component {
   render () {
@@ -24,7 +25,8 @@ class App extends React.Component {
             <Route path='/register' component={Register} />
             <Route exact path='/log-in' component={LogIn} ></Route>
             <Route path='/dashboard/:usersId' component={Dashboard} ></Route>
-            <Route path='/setting/:userid' component={Setting} />
+            <Route path='/setting/:userid/flatmatesetting' component={FlatmateSetting} />
+            <Route path='/setting/:userid/jobsetting' component={JobSetting} />
           </Switch>
 
         </Router>

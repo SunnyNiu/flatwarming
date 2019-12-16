@@ -18,7 +18,7 @@ import { connect } from 'react-redux'
 import {getFlatmates, removeFlatmateByUserId, addFlatmateSetting,addFlatmateSettingIntoDB} from '../actions/flatmates.action'
 import { setError } from '../actions/error'
 
-class Setting extends React.Component {
+class FlatmateSetting extends React.Component {
 
   state = {
     inputValue: ''
@@ -41,14 +41,14 @@ class Setting extends React.Component {
   componentDidMount () {
     this.hideNavButtons()
     const user = this.props.user
-    const userId = user[user.length-1]
+    const userId = user.userid
     this.props.dispatch(getFlatmates(userId))
     .catch(setError)   
   }
 
   render () {
     const user = this.props.user
-    const userId = user[user.length-1]
+    const userId = user.userid
     const dashboardLink = `/dashboard/${userId}`
     return (
       <>
@@ -123,4 +123,4 @@ const mapStateToProps = state => {
     user: state.userReducer
   }
 }
-export default connect(mapStateToProps)(Setting)
+export default connect(mapStateToProps)(FlatmateSetting)

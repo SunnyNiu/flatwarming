@@ -1,12 +1,21 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Container, Header, Menu, Icon } from 'semantic-ui-react'
+import { Container, Dropdown, Menu, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { hideLogin, showLogin, hideReg, showReg, hideLogout, showLogout } from '../actions/nav-buttons'
 
 import ErrorComponent from './ErrorComponent'
 
+const options = [
+  { key: 1, text: 'Job Settings', value: 'jobsetting' },
+  { key: 2, text: 'Flatmate Settings', value: 'flatmatesetting' }
+]
 class Nav extends React.Component {
+
+  state = {
+    setting:''
+  }
+
   clickRegister = () => {
     this.props.dispatch(hideReg())
     this.props.dispatch(showLogin())
@@ -27,10 +36,24 @@ class Nav extends React.Component {
     this.props.dispatch(showLogin())
   }
 
-  render () {
+  onChangeDropdownList = (event, data) => {
+    
+    this.setState({
+      setting: data.value
+    }, ()=> this.navigateToSetting())
+  }
+
+  navigateToSetting = () =>{
     const user =  this.props.user
-    const userId = user[user.length-1]
-    const settingLink = `/setting/${userId}`
+    const userId = user.userid
+    const setting = this.state.setting
+    const settingLink = `/setting/${userId}/${setting}`
+    console.log('setting', setting)
+    console.log('settingLink', settingLink)
+    this.props.history.push(settingLink)
+  }
+
+  render () {
     return (
       <>
         <Container>
@@ -49,11 +72,13 @@ class Nav extends React.Component {
               </Menu.Item>
               }
 
-              {this.props.logout && <Menu.Item as={Link} to={settingLink}>
-                <Icon name='settings'/>Settings
-              </Menu.Item>
+              {this.props.logout && 
+                <Dropdown item text='Settings'
+                  options={options}
+                  onChange={this.onChangeDropdownList}>
+                </Dropdown>
               }
-
+              
               {this.props.logout && <Menu.Item as={Link} to='/log-in' onClick={this.clickLogout}>
                 <Icon name='log out' />Log Out
               </Menu.Item>

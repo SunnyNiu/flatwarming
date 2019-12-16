@@ -133,9 +133,9 @@ class Dashboard extends React.Component {
                 <Water dueWaterDay={dueWaterDay} />
               </Grid.Column>
 
-              <Grid.Column mobile={10} tablet={8} computer={3} >
+              {/* <Grid.Column mobile={10} tablet={8} computer={3} >
                 <Rubbish day={this.state.details.dayOfWeek} />
-              </Grid.Column>
+              </Grid.Column> */}
               <Grid.Column mobile={0} tablet={8} computer={2} ></Grid.Column>
 
             </Grid.Row>

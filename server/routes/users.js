@@ -3,6 +3,8 @@ const express = require('express')
 const db = require('../db/users')
 
 const router = express.Router()
+const { getTokenDecoder } = require('authenticare/server')
+const decodeToken = getTokenDecoder(false)
 
 module.exports = router
 
@@ -12,27 +14,27 @@ const sendGenericErrorMessage = (res) => {
   )
 }
 
-router.get('/jobs/all', (req, res) => {
+router.get('/jobs/all', getTokenDecoder(), (req, res) => {
   return db.getJobsList()
     .then(jobs => res.json(jobs))
     .catch(() => sendGenericErrorMessage(res))
 })
 
-router.get('/:id', (req, res) => {
+router.get('/:id', getTokenDecoder(), (req, res) => {
   const id = Number(req.params.id)
   return db.getUserDetail(id)
     .then(userDetail => res.json(userDetail))
     .catch(() => sendGenericErrorMessage(res))
 })
 
-router.get('/flatmatelist/:userId', (req, res) => {
+router.get('/flatmatelist/:userId', getTokenDecoder(), (req, res) => {
   const userId = req.params.userId
   return db.getFlatmatesList(userId)
     .then(flatmates => res.json(flatmates))
     .catch(() => sendGenericErrorMessage(res))
 })
 
-router.delete('/flatmatelist/:userId/:flatmateId', (req, res) => {
+router.delete('/flatmatelist/:userId/:flatmateId', getTokenDecoder(), (req, res) => {
   
   const flatmateId = req.params.flatmateId
   const userId = req.params.userId
@@ -45,14 +47,14 @@ router.delete('/flatmatelist/:userId/:flatmateId', (req, res) => {
 })
 // done
 
-router.get('/user/:username', (req, res) => {
+router.get('/user/:username', getTokenDecoder(), (req, res) => {
   const username = req.params.username
   return db.getUserByName(username)
     .then(user => res.json(user))
     .catch(() => sendGenericErrorMessage(res))
 })
 
-router.post('/register/:id', (req, res) => {
+router.post('/register/:id', decodeToken, (req, res) => {
   const id = Number(req.params.id)
   const obj = {}
   obj.id = id
@@ -68,7 +70,7 @@ router.post('/register/:id', (req, res) => {
 })
 // done
 
-router.post('/jobs/flatmates/:userId', (req, res) => {
+router.post('/jobs/flatmates/:userId', decodeToken, (req, res) => {
   const usersId = Number(req.params.userId)
   const obj = { ...req.body, usersId }
   return db.addJobRelationship(obj)
@@ -77,8 +79,7 @@ router.post('/jobs/flatmates/:userId', (req, res) => {
     .catch(() => sendGenericErrorMessage(res))
 })
 
-router.post('/:id', (req, res) => {
-  const id = Number(req.params.id)
+router.post('/:id', decodeToken, (req, res) => {
   const newJob = {
     id: req.body.usersId,
     job: req.body.job,
@@ -91,7 +92,7 @@ router.post('/:id', (req, res) => {
     .catch(() => sendGenericErrorMessage(res))
 })
 
-router.post('/flatmate/:id', (req, res) => {
+router.post('/flatmate/:id', decodeToken, (req, res) => {
   const id = Number(req.params.id)
   const names = req.body.names
   const newName = {
@@ -103,7 +104,7 @@ router.post('/flatmate/:id', (req, res) => {
     .catch(() => sendGenericErrorMessage(res))
 })
 
-router.post('/flatmates/:userId', (req, res) => {
+router.post('/flatmates/:userId', decodeToken, (req, res) => {
   const userId = Number(req.params.userId)
   const name = req.body.name
   return db.addNewFlatmate(userId, name)

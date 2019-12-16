@@ -5,16 +5,17 @@ import { connect } from 'react-redux'
 import { hideLogin, showReg, hideLogout } from '../actions/nav-buttons'
 import Footer from './Footer'
 import { getUserByName } from '../api/registerFlatDetails'
+import {newUser} from '../actions/user'
 
 import { setError } from '../actions/error'
 
 function LogIn (props) {
 
-  useEffect(() => {
-    props.dispatch(showReg())
-    props.dispatch(hideLogin())
-    props.dispatch(hideLogout())
-  }, [])
+  // useEffect(() => {
+  //   props.dispatch(showReg())
+  //   props.dispatch(hideLogin())
+  //   props.dispatch(hideLogout())
+  // }, [])
 
 
   const [form, setForm] = useState({
@@ -38,8 +39,11 @@ function LogIn (props) {
     })
       .then((token) => {
         if (isAuthenticated()) {
-          getUserByName(form.username)
-            .then(user => props.history.push(`/dashboard/${user.id}`))
+          getUserByName(form.email)
+            .then(user =>{
+              props.newUser(user.id)
+              props.history.push(`/dashboard/${user.id}`)
+            })
         }
       })
       .catch(err => {
@@ -113,4 +117,9 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(LogIn)
+const mapDispatchToProps = {
+  setError,
+  newUser
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LogIn)
