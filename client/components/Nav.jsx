@@ -37,18 +37,23 @@ class Nav extends React.Component {
   }
 
   onChangeDropdownList = (event, data) => {
+    
     this.setState({
       setting: data.value
-    })
+    }, ()=> this.navigateToSetting())
+  }
+
+  navigateToSetting = () =>{
+    const user =  this.props.user
+    const userId = user.userid
+    const setting = this.state.setting
+    const settingLink = `/setting/${userId}/${setting}`
+    console.log('setting', setting)
+    console.log('settingLink', settingLink)
+    this.props.history.push(settingLink)
   }
 
   render () {
-    const setting = this.state.setting
-    const user =  this.props.user
-    const userId = user[user.length-1]
-    const settingLink = `/setting/${userId}/${setting}`
-    console.log('settingLink',settingLink )
-    console.log('setting state',this.state.setting )
     return (
       <>
         <Container>
