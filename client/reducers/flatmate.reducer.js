@@ -5,10 +5,10 @@ const INITIAL_STATE = {
 const flatmateReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case 'ADD_FLATMATE': {
-      return ({
+      return {
         ...state,
         flatmates: [...state.flatmates, action.payload]
-      })
+      }
     }
     case 'REMOVE_FLATMATE': {
       return {

@@ -99,7 +99,7 @@ class Dashboard extends React.Component {
   }
 
   render() {
-    if (this.state.details === '') {
+    if (!this.state.details) {
       return null
     }
     const { powerDay, waterDay, wifiDay } = this.state.details

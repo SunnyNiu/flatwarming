@@ -1,8 +1,8 @@
 const nock = require('nock')
-const {getUserDetails} = require('../client/api/registerFlatDetails')
+const { getUserDetails } = require('../client/api/registerFlatDetails')
 
 describe('Get User detail', () => {
-  const apiURL = 'http://localhost:3000/api/v1/users'
+  const apiURL = 'http://localhost:3000'
 
   it('should get user detail by Id', () => {
     const expected = {
@@ -17,15 +17,15 @@ describe('Get User detail', () => {
       powerDay: "11",
       waterDay: "22",
       wifiDay: "33"
-  }
+    }
 
-  nock(apiURL)
-    .get('/1')
-    .reply(200, expected)
+    nock(apiURL)
+      .get('/1')
+      .reply(200, expected)
 
-  return getUserDetails(1)
-    .then(userDetail => {
-      expect(userDetail).toEqual(expected)
-    })
+    return getUserDetails(1)
+      .then(userDetail => {
+        expect(userDetail).toEqual(expected)
+      })
   })
 })
