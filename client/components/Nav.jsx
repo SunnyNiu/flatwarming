@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Container, Dropdown, Menu, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import { hideLogin, showLogin, hideReg, showReg, hideLogout, showLogout } from '../actions/nav-buttons'
+import { hideLogin, showLogin, hideReg, showReg, hideLogout } from '../actions/nav-buttons'
 
 import ErrorComponent from './ErrorComponent'
 
@@ -11,9 +11,8 @@ const options = [
   { key: 2, text: 'Flatmate Settings', value: 'flatmatesetting' }
 ]
 class Nav extends React.Component {
-
   state = {
-    setting:''
+    setting: ''
   }
 
   clickRegister = () => {
@@ -37,19 +36,16 @@ class Nav extends React.Component {
   }
 
   onChangeDropdownList = (event, data) => {
-    
     this.setState({
       setting: data.value
-    }, ()=> this.navigateToSetting())
+    }, () => this.navigateToSetting())
   }
 
-  navigateToSetting = () =>{
-    const user =  this.props.user
+  navigateToSetting = () => {
+    const user = this.props.user
     const userId = user.userid
     const setting = this.state.setting
     const settingLink = `/setting/${userId}/${setting}`
-    console.log('setting', setting)
-    console.log('settingLink', settingLink)
     this.props.history.push(settingLink)
   }
 
@@ -72,13 +68,13 @@ class Nav extends React.Component {
               </Menu.Item>
               }
 
-              {this.props.logout && 
+              {this.props.logout &&
                 <Dropdown item text='Settings'
                   options={options}
                   onChange={this.onChangeDropdownList}>
                 </Dropdown>
               }
-              
+
               {this.props.logout && <Menu.Item as={Link} to='/log-in' onClick={this.clickLogout}>
                 <Icon name='log out' />Log Out
               </Menu.Item>

@@ -1,12 +1,6 @@
 import React from 'react'
 import {
-  Card, Image,
-  Button,
-  FormField,
-  List,
   Table,
-  Label,
-  Menu,
   Icon,
   Header
 } from 'semantic-ui-react'
@@ -14,17 +8,6 @@ import {
 import { connect } from 'react-redux'
 
 class Jobs extends React.Component {
-  // componentDidMount () {
-  //   this.props.dispatch(getJobsByUserId(this.props.userId))
-  //     .catch(setError)
-  // }
-
-  // clearJobs = (userId) => {
-  //   jobsApi.addJobToFlatmate(userId, obj)
-  //     .then(() => this.props.dispatch(getJobsByUserId(userId)))
-  //     .catch(setError)
-  // }
-
   render () {
     return (
       <>
@@ -62,8 +45,6 @@ class Jobs extends React.Component {
           }
         </Table.Body>
       </Table>
-      {/* <Button onClick={this.clearJobs(this.props.userId)}>Clear Jobs</Button> */}
-      
         </>
     )
   }
