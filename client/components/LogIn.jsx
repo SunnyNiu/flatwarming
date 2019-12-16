@@ -10,14 +10,6 @@ import {newUser} from '../actions/user'
 import { setError } from '../actions/error'
 
 function LogIn (props) {
-
-  // useEffect(() => {
-  //   props.dispatch(showReg())
-  //   props.dispatch(hideLogin())
-  //   props.dispatch(hideLogout())
-  // }, [])
-
-
   const [form, setForm] = useState({
     username: '',
     password: ''
