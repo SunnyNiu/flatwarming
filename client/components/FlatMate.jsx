@@ -2,8 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import {
   Button,
-  List,
-  Input
+  List
 } from 'semantic-ui-react'
 
 class FlatMate extends React.Component {

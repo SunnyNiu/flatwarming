@@ -56,4 +56,3 @@ export function addFlatmateByUserId (userId, flatmate) {
       }
     })
 }
-// addFlatmateByUserId

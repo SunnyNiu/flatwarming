@@ -1,18 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { register, isAuthenticated } from 'authenticare/client'
 import { Button, Form, Header, Grid, Segment, Message, Image } from 'semantic-ui-react'
 import { getUserByName } from '../api/registerFlatDetails'
 
 import { setError } from '../actions/error'
-import { showLogin, hideReg, hideLogout } from '../actions/nav-buttons'
 
-import {newUser} from '../actions/user'
+import { newUser } from '../actions/user'
 
 import Footer from './Footer'
 import { connect } from 'react-redux'
 
 function Register (props) {
-
   const [form, setForm] = useState({
     username: '',
     password: ''
@@ -37,7 +35,7 @@ function Register (props) {
           getUserByName(form.username)
             .then(user => {
               props.newUser(user.id)
-              
+
               props.history.push(`/register-flat/${user.id}`)
             })
         }

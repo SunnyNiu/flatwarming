@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Segment, Icon, Responsive, Image, List, Header, Container } from 'semantic-ui-react'
+import { Grid, Segment, Icon, Responsive, Image, List, Header } from 'semantic-ui-react'
 
 class footer extends React.Component {
   footerStyle={

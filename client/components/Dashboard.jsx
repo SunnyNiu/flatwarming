@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Grid, Image, Divider,Responsive } from 'semantic-ui-react'
+import { Grid, Divider, Responsive } from 'semantic-ui-react'
 
 import Power from './Power'
 import Internet from './Internet'
@@ -14,9 +14,9 @@ import { hideLogin, hideReg, showLogout } from '../actions/nav-buttons'
 
 import { getUserDetails } from '../api/registerFlatDetails'
 import { setError } from '../actions/error'
-import { getJobs } from '../actions/jobs.action'
+import { getJobs, getJobsByUserId } from '../actions/jobs.action'
 import { getFlatmates } from '../actions/flatmates.action'
-import { getJobsByUserId } from '../actions/jobs.action'
+
 import moment from 'moment'
 
 const calculateDueDay = function (dayPay) {
@@ -27,10 +27,10 @@ const calculateDueDay = function (dayPay) {
   const nextMonth = (month === 11 ? 0 : month + 1)
   const daypay = Number(dayPay)
   if (date <= daypay) {
-    const then = moment({ year, month: month, day: daypay, hour: 23, minute: 59, second: 59 });
+    const then = moment({ year, month: month, day: daypay, hour: 23, minute: 59, second: 59 })
     return countdownTime(then, now)
   } else {
-    const then = moment({ year, month: nextMonth, day: daypay, hour: 23, minute: 59, second: 59 });
+    const then = moment({ year, month: nextMonth, day: daypay, hour: 23, minute: 59, second: 59 })
     return countdownTime(then, now)
   }
 }
@@ -57,7 +57,7 @@ class Dashboard extends React.Component {
     this.props.dispatch(showLogout())
   }
 
-  componentDidMount() {
+  componentDidMount () {
     this.removeNavButtons()
     getUserDetails(this.props.match.params.usersId)
       .then(res => {
@@ -81,11 +81,11 @@ class Dashboard extends React.Component {
     )
   }
 
-  componentWillUnmount() {
+  componentWillUnmount () {
     clearInterval(this.intervalID)
   }
 
-  tick() {
+  tick () {
     this.setState({
       time: new Date().toLocaleString()
     })
@@ -98,7 +98,7 @@ class Dashboard extends React.Component {
     alignItems: 'center'
   }
 
-  render() {
+  render () {
     if (!this.state.details) {
       return null
     }
@@ -106,7 +106,6 @@ class Dashboard extends React.Component {
     const duePowerDay = calculateDueDay(powerDay)
     const dueWaterDay = calculateDueDay(waterDay)
     const dueWifiDay = calculateDueDay(wifiDay)
-
 
     return (
       <>
