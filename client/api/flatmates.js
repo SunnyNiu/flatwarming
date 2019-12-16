@@ -41,19 +41,19 @@ export function addFlatmateByUserId (userId, flatmate) {
   const obj = {}
   obj.name = flatmate
   return request.post(`${apiURL}/flatmates/${userId}/`)
-  .set({ 'Accept': 'application/json' })
-  .set({ 'Authorization': `Bearer ${getEncodedToken()}` })
-  .send(obj)
-  .then(res => res.body)
-  .catch(err => {
-    if (err.message === 'Not Found') {
-      throw new Error('ID not found')
-    } else {
-      const errorMessage = 'An unknown error has occurred'
-      // eslint-disable-next-line no-console
-      console.error(errorMessage)
-      throw new Error(errorMessage)
-    }
-  })
+    .set({ 'Accept': 'application/json' })
+    .set({ 'Authorization': `Bearer ${getEncodedToken()}` })
+    .send(obj)
+    .then(res => res.body)
+    .catch(err => {
+      if (err.message === 'Not Found') {
+        throw new Error('ID not found')
+      } else {
+        const errorMessage = 'An unknown error has occurred'
+        // eslint-disable-next-line no-console
+        console.error(errorMessage)
+        throw new Error(errorMessage)
+      }
+    })
 }
 // addFlatmateByUserId

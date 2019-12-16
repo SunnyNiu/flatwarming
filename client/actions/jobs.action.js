@@ -6,6 +6,7 @@ export const GET_JOBS_PENDING = 'GET_JOBS_PENDING'
 export const GET_JOBS_SUCCESS = 'GET_JOBS_SUCCESS'
 export const GET_JOBS_BY_USER_PENDING = 'GET_JOBS_BY_USER_PENDING'
 export const GET_JOBSBYUSER_SUCCESS = 'GET_JOBSBYUSER_SUCCESS'
+export const ADD_JOB_SETTING = 'ADD_JOB_SETTING'
 
 export function getJobsPending () {
   return {
@@ -46,6 +47,27 @@ export function getJobsByUserId (userId, jobDetail) {
   return dispatch => {
     return jobsApi.addJobToFlatmate(userId, jobDetail)
       .then(jobDetail => dispatch(getJobsByUserIdSuccess(jobDetail.jobDetailsByUserId)))
+      .catch(err => dispatch(setError(err.message)))
+  }
+}
+
+export function removeJob (id) {
+  return dispatch => {
+    return jobsApi.removeJobById(id)
+      .then(() => dispatch(getJobs()))
+      .catch(err => dispatch(setError(err.message)))
+  }
+}
+
+export const addJobSetting = (job) => ({
+  type: ADD_JOB_SETTING,
+  payload: job
+})
+
+export const addJobSettingIntoDB = (job) => {
+  return dispatch => {
+    return jobsApi.addJob(job)
+      .then(() => dispatch(getJobs()))
       .catch(err => dispatch(setError(err.message)))
   }
 }

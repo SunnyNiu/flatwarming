@@ -73,7 +73,7 @@ class RegisterFlatDetails extends React.Component {
     })
   }
 
-  changeHandle(value) {
+  changeHandle (value) {
     this.setState(
       {
         inputValue: value
@@ -101,14 +101,14 @@ class RegisterFlatDetails extends React.Component {
     document.getElementById('textfield1').value = ''
   }
 
-  render() {
+  render () {
     return (
       <>
         <Grid textAlign='center' style={{ alignItems: 'center', padding: '8em 0em' }} verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 800 }}>
             <Header as='h1' color='orange' textAlign='center'>
               <Image src='/favicon.png' /> Almost There! Register Your Flat Details Below:
-          </Header>
+            </Header>
             <Form size='huge'>
               <Segment stacked>
                 <Divider horizontal style={{ padding: 20 }}>Where Is Your Flat Located?</Divider>
@@ -151,7 +151,7 @@ class RegisterFlatDetails extends React.Component {
                     }}
                     color='green'>
                     Add Flatmate
-                </Button>
+                  </Button>
                 </FormField>
 
                 <Divider horizontal style={{ padding: 20 }}>What Date Do You Pay Your Bills?</Divider>
@@ -199,7 +199,7 @@ class RegisterFlatDetails extends React.Component {
                     !this.state.suburb
                   }
                 > Submit
-              </Button>
+                </Button>
 
               </Segment>
             </Form>

@@ -23,12 +23,12 @@ module.exports = {
   addNewFlatmate
 }
 
-function addNewFlatmate(userId, name, db = connection){
+function addNewFlatmate (userId, name, db = connection) {
   return db('flatmates')
-  .insert({
-    usersId: userId,
-    names: name
-  })
+    .insert({
+      usersId: userId,
+      names: name
+    })
 }
 
 function createUser (user, db = connection) {
@@ -159,10 +159,10 @@ function deleteJobs (id, db = connection) {
     .del()
 }
 
-function deleteFlatmate(id, db = connection){
+function deleteFlatmate (id, db = connection) {
   return db('flatmates')
-  .where('flatmates.id',id)
-  .del()
+    .where('flatmates.id', id)
+    .del()
 }
 
 function editName (editedName, db = connection) {

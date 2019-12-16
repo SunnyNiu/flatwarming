@@ -38,6 +38,19 @@ export function getAllJobs () {
     })
 }
 
-export function addJobs () {
-  return request.post(`${apiURL}/${id}`)
+export function removeJobById (userId, jobId) {
+  return request.delete(`${apiURL}/jobs/${userId}/${jobId}`)
+    .set({ 'Accept': 'application/json' })
+    .set({ 'Authorization': `Bearer ${getEncodedToken()}` })
+    .then(res => res.body)
+    .catch(err => {
+      if (err.message === 'Not Found') {
+        throw new Error('ID not found')
+      } else {
+        const errorMessage = 'An unknown error has occurred'
+        // eslint-disable-next-line no-console
+        console.error(errorMessage)
+        throw new Error(errorMessage)
+      }
+    })
 }
