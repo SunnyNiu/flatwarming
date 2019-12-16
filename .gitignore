@@ -65,4 +65,3 @@ bundle.*
 dev.sqlite3
 server/.DS_Store
 .DS_Store
-.env
