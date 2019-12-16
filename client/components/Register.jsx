@@ -27,14 +27,14 @@ function Register (props) {
 
   const handleClick = () => {
     register({
-      username: form.email,
+      username: form.username,
       password: form.password
     }, {
       baseUrl: process.env.BASE_API_URL
     })
       .then(() => {
         if (isAuthenticated()) {
-          getUserByName(form.email)
+          getUserByName(form.username)
             .then(user => {
               props.newUser(user.id)
               
@@ -60,9 +60,9 @@ function Register (props) {
             <Segment stacked>
 
               <Form.Input
-                name='email'
+                name='username'
                 type='email'
-                value={form.email}
+                value={form.username}
                 onChange={handleChange}
                 fluid
                 icon='user'
@@ -87,8 +87,8 @@ function Register (props) {
                 onClick={handleClick}
                 disabled={
                   !form.password ||
-                !form.email ||
-                !form.email.includes('@')
+                !form.username ||
+                !form.username.includes('@')
                 }
               >
                 Register

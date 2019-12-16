@@ -32,7 +32,7 @@ function LogIn (props) {
 
   const handleClick = () => {
     signIn({
-      username: form.email,
+      username: form.username,
       password: form.password
     }, {
       baseUrl: process.env.BASE_API_URL
@@ -62,9 +62,9 @@ function LogIn (props) {
             <Segment stacked>
 
               <Form.Input
-                name='email'
+                name='username'
                 type='email'
-                value={form.email}
+                value={form.username}
                 onChange={handleChange}
                 fluid
                 icon='user'
@@ -89,8 +89,8 @@ function LogIn (props) {
                 onClick={handleClick}
                 disabled={
                   !form.password ||
-                  !form.email ||
-                  !form.email.includes('@')
+                  !form.username ||
+                  !form.username.includes('@')
                 }
               >
                 Login

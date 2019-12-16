@@ -93,20 +93,22 @@ exports[`<Login /> component tests render unchanged from previous snapshot 1`] =
                         fluid={true}
                         icon="user"
                         iconPosition="left"
-                        name="email"
+                        name="username"
                         onChange={[Function]}
                         placeholder="E-mail address"
                         type="email"
+                        value=""
                       >
                         <FormField
                           control={[Function]}
                           fluid={true}
                           icon="user"
                           iconPosition="left"
-                          name="email"
+                          name="username"
                           onChange={[Function]}
                           placeholder="E-mail address"
                           type="email"
+                          value=""
                         >
                           <div
                             className="field"
@@ -115,19 +117,21 @@ exports[`<Login /> component tests render unchanged from previous snapshot 1`] =
                               fluid={true}
                               icon="user"
                               iconPosition="left"
-                              name="email"
+                              name="username"
                               onChange={[Function]}
                               placeholder="E-mail address"
                               type="email"
+                              value=""
                             >
                               <div
                                 className="ui fluid left icon input"
                               >
                                 <input
-                                  name="email"
+                                  name="username"
                                   onChange={[Function]}
                                   placeholder="E-mail address"
                                   type="email"
+                                  value=""
                                 />
                                 <Icon
                                   as="i"
