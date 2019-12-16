@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Container, Header, Menu, Icon } from 'semantic-ui-react'
+import { Container, Dropdown, Menu, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import { hideLogin, showLogin, hideReg, showReg, hideLogout, showLogout } from '../actions/nav-buttons'
 
@@ -50,7 +50,12 @@ class Nav extends React.Component {
               }
 
               {this.props.logout && <Menu.Item as={Link} to={settingLink}>
-                <Icon name='settings'/>Settings
+              <Dropdown item text='Settings'>
+                <Dropdown.Menu>
+                <Dropdown.Item>Job Settings</Dropdown.Item>
+                <Dropdown.Item>Flatmate Settings</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
               </Menu.Item>
               }
 
