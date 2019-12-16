@@ -61,7 +61,7 @@ function tick () {
   secs %= 60
 
   // update the time display
-  document.getElementById('days').innerHTML = curday
+  // document.getElementById('days').innerHTML = curday
   document.getElementById('hours').innerHTML = ((hours < 10) ? '0' : '') + hours
   document.getElementById('minutes').innerHTML = ((mins < 10) ? '0' : '') + mins
   document.getElementById('seconds').innerHTML = ((secs < 10) ? '0' : '') + secs

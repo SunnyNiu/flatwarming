@@ -6,7 +6,16 @@ import { hideLogin, showLogin, hideReg, showReg, hideLogout, showLogout } from '
 
 import ErrorComponent from './ErrorComponent'
 
+const options = [
+  { key: 1, text: 'Job Settings', value: 'jobsetting' },
+  { key: 2, text: 'Flatmate Settings', value: 'flatmatesetting' }
+]
 class Nav extends React.Component {
+
+  state = {
+    setting:''
+  }
+
   clickRegister = () => {
     this.props.dispatch(hideReg())
     this.props.dispatch(showLogin())
@@ -27,10 +36,19 @@ class Nav extends React.Component {
     this.props.dispatch(showLogin())
   }
 
+  onChangeDropdownList = (event, data) => {
+    this.setState({
+      setting: data.value
+    })
+  }
+
   render () {
+    const setting = this.state.setting
     const user =  this.props.user
     const userId = user[user.length-1]
-    const settingLink = `/setting/${userId}`
+    const settingLink = `/setting/${userId}/${setting}`
+    console.log('settingLink',settingLink )
+    console.log('setting state',this.state.setting )
     return (
       <>
         <Container>
@@ -49,16 +67,13 @@ class Nav extends React.Component {
               </Menu.Item>
               }
 
-              {this.props.logout && <Menu.Item as={Link} to={settingLink}>
-              <Dropdown item text='Settings'>
-                <Dropdown.Menu>
-                <Dropdown.Item>Job Settings</Dropdown.Item>
-                <Dropdown.Item>Flatmate Settings</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-              </Menu.Item>
+              {this.props.logout && 
+                <Dropdown item text='Settings'
+                  options={options}
+                  onChange={this.onChangeDropdownList}>
+                </Dropdown>
               }
-
+              
               {this.props.logout && <Menu.Item as={Link} to='/log-in' onClick={this.clickLogout}>
                 <Icon name='log out' />Log Out
               </Menu.Item>
