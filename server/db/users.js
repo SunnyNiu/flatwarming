@@ -20,7 +20,8 @@ module.exports = {
   getJobsList,
   getFlatmatesList,
   deleteFlatmate,
-  addNewFlatmate
+  addNewFlatmate,
+  addNewJob
 }
 
 function addNewFlatmate (userId, name, db = connection) {
@@ -28,6 +29,13 @@ function addNewFlatmate (userId, name, db = connection) {
     .insert({
       usersId: userId,
       names: name
+    })
+}
+
+function addNewJob (job, db = connection) {
+  return db('jobs')
+    .insert({
+      job: job
     })
 }
 

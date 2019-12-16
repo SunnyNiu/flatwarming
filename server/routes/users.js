@@ -48,10 +48,11 @@ router.delete('/flatmatelist/:userId/:flatmateId', getTokenDecoder(), (req, res)
 router.delete('/jobs/:userId/:jobId', getTokenDecoder(), (req, res) => {
   const jobId = req.params.jobId
   const userId = req.params.userId
+  console.log('routes users.js delete job by id', jobId, 'userId', userId)
   return db.deleteJobs(jobId)
     .then(
       () => db.getJobsList()
-        .then(jobs => res.json(jobs))
+        .then(jobs => { console.log('getJobsList route', jobs); res.json(jobs) })
     )
     .catch(() => sendGenericErrorMessage(res))
 })
@@ -65,14 +66,8 @@ router.get('/user/:username', getTokenDecoder(), (req, res) => {
 
 router.post('/register/:id', decodeToken, (req, res) => {
   const id = Number(req.params.id)
-  const obj = {}
-  obj.id = id
-  obj.address = req.body.address
-  obj.suburb = req.body.suburb.toLowerCase()
-  obj.names = req.body.names
-  obj.powerDay = req.body.powerDay
-  obj.waterDay = req.body.waterDay
-  obj.wifiDay = req.body.wifiDay
+  const suburb = req.body.suburb.toLowerCase()
+  const obj = { ...req.body, id, suburb }
   return db.addDetail(obj)
     .then(userDetail => res.json(userDetail))
     .catch(() => sendGenericErrorMessage(res))
@@ -84,6 +79,14 @@ router.post('/jobs/flatmates/:userId', decodeToken, (req, res) => {
   return db.addJobRelationship(obj)
     .then(() => db.getJobDetailByFlatmate(usersId)
       .then(jobDetails => res.json(jobDetails)))
+    .catch(() => sendGenericErrorMessage(res))
+})
+
+router.post('/jobs/newJob', decodeToken, (req, res) => {
+  const job = req.body.job
+  return db.addNewJob(job)
+    .then(() => db.getJobsList()
+      .then(jobs => res.json(jobs)))
     .catch(() => sendGenericErrorMessage(res))
 })
 

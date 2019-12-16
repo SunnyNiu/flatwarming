@@ -77,7 +77,7 @@ class Setting extends React.Component {
                   </Table.Cell>
 
                   <Table.Cell textAlign='center'>
-                    <Button style={{ margin: 5 }} color='red' onClick={() => { this.props.dispatch(removeJob(job.id)); this.props.dispatch(getJobs()) }}>
+                    <Button style={{ margin: 5 }} color='red' onClick={() => { this.props.dispatch(removeJob(userId, job.id)); this.props.dispatch(getJobs()) }}>
                 X
                     </Button>
                   </Table.Cell>
