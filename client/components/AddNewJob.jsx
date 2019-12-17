@@ -11,9 +11,9 @@ import {
 
 import JobList from './JobList'
 import FlatmateList from './FlatmateList'
-import * as jobsApi from '../api/jobs'
 import { getJobsByUserId } from '../actions/jobs.action'
 import { setError } from '../actions/error.action'
+import { connect } from 'react-redux'
 
 const options = [
   { key: 1, text: 'Monday', value: 'Monday' },
@@ -53,8 +53,7 @@ class AddNewJob extends React.Component {
       flatmateId,
       dueDay
     }
-    jobsApi.addJobToFlatmate(userId, obj)
-      .then(() => this.props.dispatch(getJobsByUserId(userId)))
+    this.props.dispatch(getJobsByUserId(userId, obj))
       .catch(setError)
   }
 
@@ -118,4 +117,4 @@ class AddNewJob extends React.Component {
   }
 }
 
-export default AddNewJob
+export default connect(null)(AddNewJob)

@@ -8,7 +8,7 @@ export function addJobToFlatmate (userId, jobDetails) {
     .set({ 'Accept': 'application/json' })
     .set({ 'Authorization': `Bearer ${getEncodedToken()}` })
     .send(jobDetails)
-    .then(res => { const obj = {}; obj.jobDetailsByUserId = res.body; return obj })
+    .then(res => res.body)
     .catch(err => {
       if (err.message === 'Not Found') {
         throw new Error('ID not found')
