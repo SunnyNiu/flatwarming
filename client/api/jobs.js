@@ -39,11 +39,10 @@ export function getAllJobs () {
 }
 
 export function removeJobById (userId, jobId) {
-  console.log('api jobs, userId', userId, 'jobId', jobId)
   return request.delete(`${apiURL}/jobs/${userId}/${jobId}`)
     .set({ 'Accept': 'application/json' })
     .set({ 'Authorization': `Bearer ${getEncodedToken()}` })
-    .then(res => { console.log('res.body jobs api', res.body); return res.body })
+    .then(res => res.body)
     .catch(err => {
       if (err.message === 'Not Found') {
         throw new Error('ID not found')
@@ -61,7 +60,7 @@ export function addJob (job) {
     .set({ 'Accept': 'application/json' })
     .set({ 'Authorization': `Bearer ${getEncodedToken()}` })
     .send({ 'job': job })
-    .then(res => { console.log(res.body, 'res.body in jobs api'); const obj = {}; obj.job = res.body; return obj })
+    .then(res => {const obj = {}; obj.job = res.body; return obj )
     .catch(err => {
       if (err.message === 'Not Found') {
         throw new Error('ID not found')

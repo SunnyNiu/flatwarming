@@ -1,4 +1,4 @@
- 
+
 const knex = require('knex')
 
 const testConfig = require('../../knexfile').test

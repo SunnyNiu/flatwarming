@@ -48,11 +48,10 @@ router.delete('/flatmatelist/:userId/:flatmateId', getTokenDecoder(), (req, res)
 router.delete('/jobs/:userId/:jobId', getTokenDecoder(), (req, res) => {
   const jobId = req.params.jobId
   const userId = req.params.userId
-  console.log('routes users.js delete job by id', jobId, 'userId', userId)
   return db.deleteJobs(jobId)
     .then(
       () => db.getJobsList()
-        .then(jobs => { console.log('getJobsList route', jobs); res.json(jobs) })
+        .then(jobs => res.json(jobs))
     )
     .catch(() => sendGenericErrorMessage(res))
 })

@@ -1,6 +1,6 @@
 import flatmateDetailReducer from '../../../client/reducers/flatmateDetails.reducer'
 
-describe ('flatmateDetails reducer and action tests', () => {
+describe('flatmateDetails reducer and action tests', () => {
   it('case ADD_FLATMATE_DETAIL', () => {
     // Arrange
     const INITIAL_STATE = {}
@@ -17,5 +17,4 @@ describe ('flatmateDetails reducer and action tests', () => {
     // Assert
     expect(actual).toEqual(expected)
   })
-  
 })
