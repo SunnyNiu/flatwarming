@@ -2,11 +2,8 @@ import React, { useState } from 'react'
 import { register, isAuthenticated } from 'authenticare/client'
 import { Button, Form, Header, Grid, Segment, Message, Image } from 'semantic-ui-react'
 import { getUserByName } from '../api/registerFlatDetails'
-
 import { setError } from '../actions/error'
-
 import { newUser } from '../actions/user'
-
 import Footer from './Footer'
 import { connect } from 'react-redux'
 

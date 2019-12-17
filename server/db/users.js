@@ -104,7 +104,6 @@ function getUserDetail (id, db = connection) {
     .join('rubbishPlan', 'rubbishUsers.suburb', 'rubbishPlan.suburb')
     .join('flatmates', 'users.id', 'flatmates.usersId')
     .join('expense', 'users.id', 'expense.usersId')
-    // .join('jobs', 'users.id', 'jobs.usersId')
     .select()
     .first()
 }
@@ -184,7 +183,6 @@ function editName (editedName, db = connection) {
     .then(() => getUserDetail(id, db))
 }
 
-// editName has not been checked func yet
 function deleteName (id, db = connection) {
   return db('flatmates')
     .where('flatmates.id', id)

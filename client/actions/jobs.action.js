@@ -52,7 +52,6 @@ export function getJobsByUserId (userId, jobDetail) {
 }
 
 export function removeJob (userId, jobId) {
-  console.log('remove job id', jobId)
   return dispatch => {
     return jobsApi.removeJobById(userId, jobId)
       .then(() => dispatch(getJobs()))

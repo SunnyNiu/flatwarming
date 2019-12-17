@@ -1,9 +1,7 @@
 import error from '../../../client/reducers/error'
-
-
 import { SET_ERROR } from '../../../client/actions/error'
 
-describe ('Error reducer tests', () => {
+describe('Error reducer tests', () => {
   it('case SET_Error', () => {
     // Arrange
     const expected = 'uh oh, an error!'
@@ -16,5 +14,4 @@ describe ('Error reducer tests', () => {
     // Assert
     expect(actual).toBe(expected)
   })
-  
 })

@@ -5,7 +5,7 @@ export default function flatmatesReducer (state = [], action) {
     case GET_FLATMATES_SUCCESS:
       return action.flatmates
     case ADD_FLATMATE_SETTING:
-      return [...state, action.flatmate]  
+      return [...state, action.flatmate]
 
     default:
       return state

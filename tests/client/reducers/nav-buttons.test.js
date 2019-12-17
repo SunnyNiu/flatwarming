@@ -4,7 +4,7 @@ import register from '../../../client/reducers/reg-button'
 
 import { HIDE_LOGIN, SHOW_LOGIN, HIDE_REG, SHOW_REG, HIDE_LOGOUT, SHOW_LOGOUT } from '../../../client/actions/nav-buttons'
 
-describe ('login button reducer tests', () => {
+describe('login button reducer tests', () => {
   it('case SHOW_LOGIN', () => {
     // Arrange
     const expected = true
@@ -16,7 +16,7 @@ describe ('login button reducer tests', () => {
     // Assert
     expect(actual).toBe(expected)
   })
-  
+
   it('case HIDE_LOGIN', () => {
     // Arrange
     const expected = false
@@ -30,7 +30,7 @@ describe ('login button reducer tests', () => {
   })
 })
 
-describe ('logout button reducer tests', () => {
+describe('logout button reducer tests', () => {
   it('case SHOW_LOGOUT', () => {
     // Arrange
     const expected = true
@@ -42,7 +42,7 @@ describe ('logout button reducer tests', () => {
     // Assert
     expect(actual).toBe(expected)
   })
-  
+
   it('case HIDE_LOGOUT', () => {
     // Arrange
     const expected = false
@@ -56,7 +56,7 @@ describe ('logout button reducer tests', () => {
   })
 })
 
-describe ('register button reducer tests', () => {
+describe('register button reducer tests', () => {
   it('case SHOW_REGISTER', () => {
     // Arrange
     const expected = true
@@ -68,7 +68,7 @@ describe ('register button reducer tests', () => {
     // Assert
     expect(actual).toBe(expected)
   })
-  
+
   it('case HIDE_REGISTER', () => {
     // Arrange
     const expected = false

@@ -13,7 +13,6 @@ import JobList from './JobList'
 import FlatmateList from './FlatmateList'
 import * as jobsApi from '../api/jobs'
 import { getJobsByUserId } from '../actions/jobs.action'
-import { connect } from 'react-redux'
 import { setError } from '../actions/error'
 
 const options = [
@@ -75,43 +74,43 @@ class AddNewJob extends React.Component {
     return (
       <>
       <Grid textAlign='center' style={{ height: '60vh' }} verticalAlign='middle'>
-      <Grid.Column style={{ maxWidth: 600 }}>
-        <Header as='h1' color='orange' textAlign='center' icon>
-          <Icon name='arrow right'/>
+        <Grid.Column style={{ maxWidth: 600 }}>
+          <Header as='h1' color='orange' textAlign='center' icon>
+            <Icon name='arrow right'/>
           Add A Job
-        </Header>
-        <Form onSubmit={this.onSubmit}>
-        <Segment stacked>
-          <JobList
-            name='jobId'
-            label='Job:'
-            required={true}
-            eventHandlerJob={this.eventHandlerJob}
-          />
-          <FlatmateList
-            userId= {this.props.userId}
-            name='flatmateId'
-            label='Flatmate:'
-            required={true}
-            eventHandlerFlatmate={this.eventHandlerFlatmate}
-          />
-          <Form.Field control={Dropdown}
-            selection
-            clearable
-            placeholder="Due Day:"
-            onChange={this.onChangeDropdownList}
-            options={options}
-            name="dueDay"
-            label="Due Day"
-            required={true}
-          />
-          <Form.Field color='green'
-            control={Button}
-          >
+          </Header>
+          <Form onSubmit={this.onSubmit}>
+            <Segment stacked>
+              <JobList
+                name='jobId'
+                label='Job:'
+                required={true}
+                eventHandlerJob={this.eventHandlerJob}
+              />
+              <FlatmateList
+                userId= {this.props.userId}
+                name='flatmateId'
+                label='Flatmate:'
+                required={true}
+                eventHandlerFlatmate={this.eventHandlerFlatmate}
+              />
+              <Form.Field control={Dropdown}
+                selection
+                clearable
+                placeholder="Due Day:"
+                onChange={this.onChangeDropdownList}
+                options={options}
+                name="dueDay"
+                label="Due Day"
+                required={true}
+              />
+              <Form.Field color='green'
+                control={Button}
+              >
             Submit
-          </Form.Field>
-          </Segment>
-        </Form>
+              </Form.Field>
+            </Segment>
+          </Form>
         </Grid.Column>
       </Grid>
       </>
@@ -119,4 +118,4 @@ class AddNewJob extends React.Component {
   }
 }
 
-export default connect(null)(AddNewJob)
+export default AddNewJob

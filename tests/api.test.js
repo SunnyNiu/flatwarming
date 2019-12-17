@@ -7,16 +7,16 @@ describe('Get User detail', () => {
   it('should get user detail by Id', () => {
     const expected = {
       id: 1,
-      email: "row1@gmail.com",
-      password: "x1235r",
+      email: 'row1@gmail.com',
+      password: 'x1235r',
       usersId: 1,
-      address: "rowValue1 street",
-      suburb: "suburb1",
-      dayOfWeek: "day1",
-      names: "rowValue1",
-      powerDay: "11",
-      waterDay: "22",
-      wifiDay: "33"
+      address: 'rowValue1 street',
+      suburb: 'suburb1',
+      dayOfWeek: 'day1',
+      names: 'rowValue1',
+      powerDay: '11',
+      waterDay: '22',
+      wifiDay: '33'
     }
 
     nock(apiURL)

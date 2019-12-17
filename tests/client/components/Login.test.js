@@ -14,9 +14,9 @@ describe('<Login /> component tests', () => {
   it('render unchanged from previous snapshot', () => {
     const initialState = {
       login: true,
-      register: true 
+      register: true
     }
-    
+
     const store = mockStore(initialState)
     const component =
     <Provider store = {store}>
