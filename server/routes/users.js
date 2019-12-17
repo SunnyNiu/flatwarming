@@ -74,11 +74,12 @@ router.post('/register/:id', decodeToken, (req, res) => {
 
 router.post('/jobs/flatmates/:userId', decodeToken, (req, res) => {
   const usersId = Number(req.params.userId)
+  console.log('req.body in row 77', req.body)
   const obj = { ...req.body, usersId }
   console.log(obj, ':users router')
   return db.addJobRelationship(obj)
-    .then(() => db.getJobDetailByFlatmate(usersId)
-      .then(jobDetails => res.json(jobDetails)))
+    .then(x => db.getJobDetailByFlatmate(usersId)
+      .then(jobDetails => { console.log('jobDetails 81 row ', jobDetails); const obj = {}; obj.jobDetails = jobDetails; res.json(obj) }))
     .catch(() => sendGenericErrorMessage(res))
 })
 

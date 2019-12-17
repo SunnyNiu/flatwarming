@@ -53,6 +53,7 @@ function createUser (user, db = connection) {
 }
 
 function addJobRelationship (jobDetail, db = connection) {
+  console.log('job relationship in 56 row', jobDetail)
   return db('jobs_relationships')
     .insert({
       usersId: jobDetail.usersId,

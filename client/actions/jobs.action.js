@@ -46,7 +46,7 @@ export function getJobsByUserIdSuccess (jobsDetail) {
 export function getJobsByUserId (userId, jobDetail) {
   return dispatch => {
     return jobsApi.addJobToFlatmate(userId, jobDetail)
-      .then(jobDetail => dispatch(getJobsByUserIdSuccess(jobDetail.jobDetailsByUserId)))
+      .then(jobDetail => { console.log(jobDetail); dispatch(getJobsByUserIdSuccess(jobDetail.jobDetails)) })
       .catch(err => dispatch(setError(err.message)))
   }
 }
