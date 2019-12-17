@@ -1,4 +1,4 @@
-import { HIDE_LOGIN, SHOW_LOGIN } from '../actions/nav-buttons'
+import { HIDE_LOGIN, SHOW_LOGIN } from '../actions/nav-buttons.action'
 
 export default function login (state = true, action) {
   switch (action.type) {

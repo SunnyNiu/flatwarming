@@ -5,7 +5,7 @@ import Footer from './Footer'
 
 import { addFlatmate, removeFlatmate } from '../actions/flatmate.action'
 import { addRegisterFlatmateDetail } from '../actions/flatmateDetails.action'
-import { setError } from '../actions/error'
+import { setError } from '../actions/error.action'
 
 import {
   Button,

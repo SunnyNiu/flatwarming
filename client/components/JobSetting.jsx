@@ -10,11 +10,11 @@ import {
   Table
 } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
-import { hideLogin, hideReg, showLogout } from '../actions/nav-buttons'
+import { hideLogin, hideReg, showLogout } from '../actions/nav-buttons.action'
 
 import { connect } from 'react-redux'
 import { getJobs, removeJob, addJobSettingIntoDB } from '../actions/jobs.action'
-import { setError } from '../actions/error'
+import { setError } from '../actions/error.action'
 
 class Setting extends React.Component {
   state = {

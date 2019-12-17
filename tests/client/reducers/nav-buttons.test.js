@@ -2,7 +2,7 @@ import login from '../../../client/reducers/login-button'
 import logout from '../../../client/reducers/logout-button'
 import register from '../../../client/reducers/reg-button'
 
-import { HIDE_LOGIN, SHOW_LOGIN, HIDE_REG, SHOW_REG, HIDE_LOGOUT, SHOW_LOGOUT } from '../../../client/actions/nav-buttons'
+import { HIDE_LOGIN, SHOW_LOGIN, HIDE_REG, SHOW_REG, HIDE_LOGOUT, SHOW_LOGOUT } from '../../../client/actions/nav-buttons.action'
 
 describe('login button reducer tests', () => {
   it('case SHOW_LOGIN', () => {

@@ -13,7 +13,7 @@ import JobList from './JobList'
 import FlatmateList from './FlatmateList'
 import * as jobsApi from '../api/jobs'
 import { getJobsByUserId } from '../actions/jobs.action'
-import { setError } from '../actions/error'
+import { setError } from '../actions/error.action'
 
 const options = [
   { key: 1, text: 'Monday', value: 'Monday' },

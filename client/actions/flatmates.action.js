@@ -1,4 +1,4 @@
-import { setError } from './error'
+import { setError } from './error.action'
 import * as api from '../api/flatmates'
 
 export const GET_FLATMATES_PENDING = 'GET_FLATMATES_PENDING'
@@ -23,7 +23,7 @@ export function getFlatmates (userId) {
     dispatch(getFlatmatesPending())
 
     return api.getAllFlatmates(userId)
-      .then(flatmates => { console.log('getAllFlatMates:', flatmates); dispatch(getFlatmatesSuccess(flatmates.flatmates)) })
+      .then(flatmates => dispatch(getFlatmatesSuccess(flatmates.flatmates)))
       .catch(err => dispatch(setError(err.message)))
   }
 }

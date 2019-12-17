@@ -1,4 +1,4 @@
-import { setError } from './error'
+import { setError } from './error.action'
 import * as api from '../api/registerFlatDetails'
 import * as jobsApi from '../api/jobs'
 
