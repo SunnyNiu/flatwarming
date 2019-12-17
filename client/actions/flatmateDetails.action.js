@@ -1,4 +1,4 @@
-import { setError } from './error'
+import { setError } from './error.action'
 import * as api from '../api/registerFlatDetails'
 
 export function addFlatmateDetail (flatmateDetail) {

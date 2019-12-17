@@ -60,7 +60,7 @@ export function addJob (job) {
     .set({ 'Accept': 'application/json' })
     .set({ 'Authorization': `Bearer ${getEncodedToken()}` })
     .send({ 'job': job })
-    .then(res => {const obj = {}; obj.job = res.body; return obj )
+    .then(res => { const obj = {}; obj.job = res.body; return obj })
     .catch(err => {
       if (err.message === 'Not Found') {
         throw new Error('ID not found')

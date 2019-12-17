@@ -75,6 +75,7 @@ router.post('/register/:id', decodeToken, (req, res) => {
 router.post('/jobs/flatmates/:userId', decodeToken, (req, res) => {
   const usersId = Number(req.params.userId)
   const obj = { ...req.body, usersId }
+  console.log(obj, ':users router')
   return db.addJobRelationship(obj)
     .then(() => db.getJobDetailByFlatmate(usersId)
       .then(jobDetails => res.json(jobDetails)))

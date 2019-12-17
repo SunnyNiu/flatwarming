@@ -4,9 +4,9 @@ import { Button, Form, Header, Grid, Segment, Message, Image } from 'semantic-ui
 import { connect } from 'react-redux'
 import Footer from './Footer'
 import { getUserByName } from '../api/registerFlatDetails'
-import { newUser } from '../actions/user'
+import { newUser } from '../actions/user.action'
 
-import { setError } from '../actions/error'
+import { setError } from '../actions/error.action'
 
 function LogIn (props) {
   const [form, setForm] = useState({

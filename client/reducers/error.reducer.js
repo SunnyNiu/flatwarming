@@ -1,4 +1,4 @@
-import { SET_ERROR } from '../actions/error'
+import { SET_ERROR } from '../actions/error.action'
 
 export default function (error = null, action) {
   switch (action.type) {

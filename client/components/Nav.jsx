@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Container, Dropdown, Menu, Icon } from 'semantic-ui-react'
 import { connect } from 'react-redux'
-import { hideLogin, showLogin, hideReg, showReg, hideLogout } from '../actions/nav-buttons'
+import { hideLogin, showLogin, hideReg, showReg, hideLogout } from '../actions/nav-buttons.action'
 
 import ErrorComponent from './ErrorComponent'
 

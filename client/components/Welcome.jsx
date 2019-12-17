@@ -2,8 +2,8 @@ import React from 'react'
 import { Image } from 'semantic-ui-react'
 import WelcomeText from './WelcomeText'
 import { connect } from 'react-redux'
-import { showLogin, showReg, hideLogout } from '../actions/nav-buttons'
-import { setError } from '../actions/error'
+import { showLogin, showReg, hideLogout } from '../actions/nav-buttons.action'
+import { setError } from '../actions/error.action'
 
 class welcomeImg extends React.Component {
   showNavButtons = () => {

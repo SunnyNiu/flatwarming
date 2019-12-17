@@ -63,6 +63,7 @@ function addJobRelationship (jobDetail, db = connection) {
 }
 
 function getJobDetailByFlatmate (userId, db = connection) {
+  console.log('here get Job Detail By Flatmate!')
   return db('jobs')
     .join('jobs_relationships', 'jobs.id', 'jobs_relationships.jobId')
     .join('flatmates', 'jobs_relationships.flatmateId', 'flatmates.id')

@@ -10,10 +10,10 @@ import Footer from './Footer'
 import Jobs from './Jobs'
 import AddNewJob from './AddNewJob'
 import { connect } from 'react-redux'
-import { hideLogin, hideReg, showLogout } from '../actions/nav-buttons'
+import { hideLogin, hideReg, showLogout } from '../actions/nav-buttons.action'
 
 import { getUserDetails } from '../api/registerFlatDetails'
-import { setError } from '../actions/error'
+import { setError } from '../actions/error.action'
 import { getJobs, getJobsByUserId } from '../actions/jobs.action'
 import { getFlatmates } from '../actions/flatmates.action'
 
