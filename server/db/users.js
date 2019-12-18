@@ -27,7 +27,7 @@ module.exports = {
 function addNewFlatmate (userId, name, db = connection) {
   return db('flatmates')
     .insert({
-      usersId: userId,
+      userId: userId,
       names: name
     })
 }
@@ -56,7 +56,7 @@ function addJobRelationship (jobDetail, db = connection) {
   console.log('job relationship in 56 row', jobDetail)
   return db('jobs_relationships')
     .insert({
-      usersId: jobDetail.usersId,
+      userId: jobDetail.userId,
       jobId: jobDetail.jobId,
       flatmateId: jobDetail.flatmateId,
       dueDay: jobDetail.dueDay
@@ -68,7 +68,7 @@ function getJobDetailByFlatmate (userId, db = connection) {
   return db('jobs')
     .join('jobs_relationships', 'jobs.id', 'jobs_relationships.jobId')
     .join('flatmates', 'jobs_relationships.flatmateId', 'flatmates.id')
-    .where('flatmates.usersId', userId)
+    .where('flatmates.userId', userId)
     .select('flatmates.names as name', 'jobs.job as job', 'jobs_relationships.dueDay as dueDay')
 }
 
@@ -79,7 +79,7 @@ function getJobsList (db = connection) {
 
 function getFlatmatesList (userId, db = connection) {
   return db('flatmates')
-    .where('usersId', userId)
+    .where('userId', userId)
     .select('flatmates.id as id', 'flatmates.names as name')
 }
 
@@ -102,10 +102,10 @@ function getUserByName (email, db = connection) {
 function getUserDetail (id, db = connection) {
   return db('users')
     .where('users.id', id)
-    .join('rubbishUsers', 'users.id', 'rubbishUsers.usersId')
+    .join('rubbishUsers', 'users.id', 'rubbishUsers.userId')
     .join('rubbishPlan', 'rubbishUsers.suburb', 'rubbishPlan.suburb')
-    .join('flatmates', 'users.id', 'flatmates.usersId')
-    .join('expense', 'users.id', 'expense.usersId')
+    .join('flatmates', 'users.id', 'flatmates.userId')
+    .join('expense', 'users.id', 'expense.userId')
     .select()
     .first()
 }
@@ -123,7 +123,7 @@ function addDetail (obj, db = connection) {
 function addAddress (id, address, suburb, db = connection) {
   return db('rubbishUsers')
     .insert({
-      usersId: id,
+      userId: id,
       address: address,
       suburb: suburb
     })
@@ -133,7 +133,7 @@ function addName (id, names, db = connection) {
   const array = []
   for (let i = 0; i < names.length; i++) {
     const obj = {}
-    obj.usersId = id
+    obj.userId = id
     obj.names = names[i]
     array.push(obj)
   }
@@ -143,7 +143,7 @@ function addName (id, names, db = connection) {
 function addExpenseDay (id, powerDay, waterDay, wifiDay, db = connection) {
   return db('expense')
     .insert({
-      usersId: id,
+      userId: id,
       powerDay: powerDay,
       waterDay: waterDay,
       wifiDay: wifiDay
@@ -154,7 +154,7 @@ function addJobs (newJob, db = connection) {
   const { id, job, names, dueDay } = newJob
   return db('jobs')
     .insert({
-      usersId: id,
+      userId: id,
       job: job,
       names: names,
       dueDay: dueDay
@@ -179,7 +179,7 @@ function editName (editedName, db = connection) {
   return db('flatmates')
     .where('id', id)
     .update({
-      usersId: id,
+      userId: id,
       names: editedName.names
     })
     .then(() => getUserDetail(id, db))
@@ -193,7 +193,7 @@ function deleteName (id, db = connection) {
 
 function editPower (id, powerDay, db = connection) {
   return db('expense')
-    .where('expense.usersId', id)
+    .where('expense.userId', id)
     .update({
       powerDay: powerDay
     })
@@ -201,7 +201,7 @@ function editPower (id, powerDay, db = connection) {
 
 function editWater (id, waterDay, db = connection) {
   return db('expense')
-    .where('expense.usersId', id)
+    .where('expense.userId', id)
     .update({
       waterDay: waterDay
     })

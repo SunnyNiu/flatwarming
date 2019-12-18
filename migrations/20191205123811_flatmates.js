@@ -1,7 +1,7 @@
 exports.up = function (knex) {
   return knex.schema.createTable('flatmates', table => {
     table.increments('id')
-    table.integer('usersId')
+    table.integer('userId')
     table.string('names')
   })
 }

@@ -74,12 +74,12 @@ router.post('/register/:id', decodeToken, (req, res) => {
 })
 
 router.post('/jobs/flatmates/:userId', decodeToken, (req, res) => {
-  const usersId = Number(req.params.userId)
+  const userId = Number(req.params.userId)
   console.log('req.body in row 77', req.body)
-  const obj = { ...req.body, usersId }
+  const obj = { ...req.body, userId }
   console.log(obj, ':users router')
   return db.addJobRelationship(obj)
-    .then(x => db.getJobDetailByFlatmate(usersId)
+    .then(x => db.getJobDetailByFlatmate(userId)
       .then(jobDetails => { console.log('jobDetails 81 row ', jobDetails); const obj = {}; obj.jobDetails = jobDetails; res.json(obj) }))
     .catch(() => sendGenericErrorMessage(res))
 })
@@ -94,7 +94,7 @@ router.post('/jobs/newJob', decodeToken, (req, res) => {
 
 router.post('/:id', decodeToken, (req, res) => {
   const newJob = {
-    id: req.body.usersId,
+    id: req.body.userId,
     job: req.body.job,
     names: req.body.job,
     dueDay: req.body.dueDay
