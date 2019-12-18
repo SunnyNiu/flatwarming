@@ -29,10 +29,16 @@ export function getFlatmates (userId) {
 }
 
 export function removeFlatmateByUserId (userId, flatmateId) {
-  return dispatch => {
-    return api.removeFlatmateByUserId(userId, flatmateId)
-      .then(flatmates => dispatch(getFlatmatesSuccess(flatmates)))
-      .catch(err => dispatch(setError(err.message)))
+  if (api.getAllFlatmates(userId).length > 0) {
+    console.log('what?')
+    return dispatch => {
+      return api.removeFlatmateByUserId(userId, flatmateId)
+        .then(flatmates => dispatch(getFlatmatesSuccess(flatmates)))
+        .catch(err => dispatch(setError(err.message)))
+    }
+  } else {
+    console.log('W T F?')
+    return null
   }
 }
 

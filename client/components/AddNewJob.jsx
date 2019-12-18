@@ -11,7 +11,7 @@ import {
 
 import JobList from './JobList'
 import FlatmateList from './FlatmateList'
-import { getJobsByUserId } from '../actions/jobs.action'
+import { getJobsByUserIdAfterAdding } from '../actions/jobs.action'
 import { setError } from '../actions/error.action'
 import { connect } from 'react-redux'
 
@@ -53,7 +53,7 @@ class AddNewJob extends React.Component {
       flatmateId,
       dueDay
     }
-    this.props.dispatch(getJobsByUserId(userId, obj))
+    this.props.dispatch(getJobsByUserIdAfterAdding(userId, obj))
       .catch(setError)
   }
 
