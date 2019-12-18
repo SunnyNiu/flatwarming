@@ -22,7 +22,7 @@ class App extends React.Component {
             <Route exact path='/register-flat/:userid' component={RegisterFlatDetails} ></Route>
             <Route path='/register' component={Register} />
             <Route exact path='/log-in' component={LogIn} ></Route>
-            <Route path='/dashboard/:usersId' component={Dashboard} ></Route>
+            <Route path='/dashboard/:userId' component={Dashboard} ></Route>
             <Route path='/setting/:userid/flatmatesetting' component={FlatmateSetting} />
             <Route path='/setting/:userid/jobsetting' component={JobSetting} />
           </Switch>

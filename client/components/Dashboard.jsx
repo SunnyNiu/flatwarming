@@ -59,7 +59,7 @@ class Dashboard extends React.Component {
 
   componentDidMount () {
     this.removeNavButtons()
-    getUserDetails(this.props.match.params.usersId)
+    getUserDetails(this.props.match.params.userId)
       .then(res => {
         console.log('res', res)
         this.setState({
@@ -70,10 +70,10 @@ class Dashboard extends React.Component {
     this.props.dispatch(getJobs())
       .catch(setError)
 
-    this.props.dispatch(getFlatmates(this.props.match.params.usersId))
+    this.props.dispatch(getFlatmates(this.props.match.params.userId))
       .catch(setError)
 
-    this.props.dispatch(getJobsByUserId(this.props.match.params.usersId))
+    this.props.dispatch(getJobsByUserId(this.props.match.params.userId))
       .catch(setError)
 
     this.intervalID = setInterval(
@@ -143,11 +143,11 @@ class Dashboard extends React.Component {
             <Grid.Row>
 
               <Grid.Column mobile={12} tablet={8} computer={4}>
-                <AddNewJob userId={this.props.match.params.usersId} />
+                <AddNewJob userId={this.props.match.params.userId} />
               </Grid.Column>
 
               <Grid.Column computer={12}>
-                <Jobs userId={this.props.match.params.usersId} />
+                <Jobs userId={this.props.match.params.userId} />
               </Grid.Column>
 
             </Grid.Row>

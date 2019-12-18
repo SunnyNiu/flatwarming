@@ -5,7 +5,7 @@ const mockUser = {
   id: 1,
   email: 'row1@gmail.com',
   password: 'x1235r',
-  usersId: 1,
+  userId: 1,
   address: 'rowValue1 street',
   suburb: 'suburb1',
   dayOfWeek: 'day1',
