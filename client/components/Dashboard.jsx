@@ -61,9 +61,10 @@ class Dashboard extends React.Component {
     this.removeNavButtons()
     getUserDetails(this.props.match.params.usersId)
       .then(res => {
+        console.log('res', res)
         this.setState({
           details: res
-        })
+        }, () => console.log(this.state.details, '????'))
       })
 
     this.props.dispatch(getJobs())

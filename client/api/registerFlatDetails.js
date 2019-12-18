@@ -8,7 +8,7 @@ export function getUserDetails (id) {
   return request.get(`${apiURL}/${id}`)
     .set({ 'Accept': 'application/json' })
     .set({ 'Authorization': `Bearer ${getEncodedToken()}` })
-    .then(res => res.body)
+    .then(res => { console.log(res.body, 'here'); return res.body })
     .catch(err => {
       if (err.message === 'Not Found') {
         throw new Error('ID not found')

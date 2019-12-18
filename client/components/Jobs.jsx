@@ -9,6 +9,7 @@ import { connect } from 'react-redux'
 
 class Jobs extends React.Component {
   render () {
+    console.log('this.props.jobDetail:', this.props.jobDetail)
     return (
       <>
       <Header as='h2' textAlign='center' block>

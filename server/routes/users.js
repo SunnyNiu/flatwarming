@@ -22,8 +22,9 @@ router.get('/jobs/all', getTokenDecoder(), (req, res) => {
 
 router.get('/:id', getTokenDecoder(), (req, res) => {
   const id = Number(req.params.id)
+  console.log(id, ':users.js')
   return db.getUserDetail(id)
-    .then(userDetail => res.json(userDetail))
+    .then(userDetail => { console.log('user details', userDetail); return res.json(userDetail) })
     .catch(() => sendGenericErrorMessage(res))
 })
 
