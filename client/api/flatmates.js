@@ -24,7 +24,7 @@ export function removeFlatmateByUserId (userId, flatmateId) {
   return request.delete(`${apiURL}/flatmatelist/${userId}/${flatmateId}`)
     .set({ 'Accept': 'application/json' })
     .set({ 'Authorization': `Bearer ${getEncodedToken()}` })
-    .then(res => res.body)
+    .then(res => { console.log('client side... remove flatmate by userId'); res.body })
     .catch(err => {
       if (err.message === 'Not Found') {
         throw new Error('ID not found')

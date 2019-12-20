@@ -38,6 +38,8 @@ router.get('/flatmatelist/:userId', getTokenDecoder(), (req, res) => {
 router.delete('/flatmatelist/:userId/:flatmateId', getTokenDecoder(), (req, res) => {
   const flatmateId = req.params.flatmateId
   const userId = req.params.userId
+  console.log('flatmateId', flatmateId)
+  console.log('userId', userId)
   return db.deleteFlatmate(flatmateId)
     .then(
       () => db.getFlatmatesList(userId)
